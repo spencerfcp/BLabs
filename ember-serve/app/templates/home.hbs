@@ -1,0 +1,118 @@
+<div id="account_navigation">
+    <div id="mainNavContainer">
+        <div class="navContainer">
+            <ul>
+                <li class="one {{if home_nav_page_1 "active_link"}}" id="my_account"  {{action 'navClick' 'my_account' on 'click' }}>{{#link-to "home"}}My Account{{/link-to}}</li><li id="saved_lists" class="two {{if home_nav_page_2 "active_link"}}" {{action 'navClick'  'saved_lists'  on 'click' }}>{{#link-to "home" }}History{{/link-to}}</li><li id="search_places" class="three {{if home_nav_page_3 "active_link"}}" {{action 'navClick' 'search_places' on 'click' }}>{{#link-to "home"}}Search{{/link-to}}</li>
+                <hr>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="main_home_page_content">
+{{#if home_nav_page_1}}
+    <div id="dashboardHeader" class=" green-background pageHeader">
+        <span class="subHeader zoomIT">My Account</span><br>
+        <span class="zoomIT" style="">Update Your Login Information</span>
+    </div>
+    <div id="account_update_form_container">
+    <form class="account_update_form" {{action 'update_member' on='submit'}}>
+        <div class="form-group">
+            <label for="password" class="col-xs-12">Password</label><br>
+            <div class="col-sm-12">
+                {{input id='account_password' key-up=(action 'confirmSame' password password2) placeholder='Enter Password' type='password' value=password class='form-control'}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-xs-12">Password Again</label><br>
+            <div class="col-sm-12">
+                {{input id='account_password2' key-up=(action 'confirmSame' password password2) placeholder='Enter Password' type='password' value=password2 class='form-control'}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+        {{#if passwords_match}}{{else}}<span class="error">Passwords Must Match</span> {{/if}}
+                </div>
+            </div>
+        <div class="form-group">
+        <div class="col-sm-12">
+
+        <button class="btn btn-success" type="submit"> Update Account</button><br>
+            </div>
+            </div>
+        <div style="clear:both"></div>
+    </form>
+    </div>
+{{/if}}
+
+{{#if home_nav_page_2}}
+    <div id="dashboardHeader" class=" green-background pageHeader">
+        <span class="subHeader zoomIT">Search History</span><br>
+        <span class="zoomIT" style="">View Your Previous Searches</span>
+    </div>
+    <div id="account_update_form_container">
+    {{#each model.search_history_data as |search|}}
+    <ul class="search_listing">
+        <li><span class="bold">Search Date:</span> {{format_timestamp search.created_at}}</li>
+        <li>
+            <span class="bold">Search Term:</span> <span class="search_list_value">{{search.searchterm}}</span> <span class="bold">Search Location:</span>  <span class="search_list_value">{{search.searchlocation}}</span>
+        </li>
+    </ul>
+    {{/each}}
+
+    </div>
+{{/if}}
+{{#if home_nav_page_3}}
+    <div id="dashboardHeader" class=" green-background pageHeader">
+        <span class="subHeader zoomIT">Search Yelp</span><br>
+        <span class="zoomIT" style="">Search for interesting places near you!</span>
+    </div>
+    <div id="account_update_form_container">
+        <form class="yelp_search_form" {{action 'submitSearch' on='submit'}}>
+            <div class="form-group">
+                <label for="term" class="col-xs-12">Enter Search Term</label>
+                <div class="col-sm-12">
+                    {{input id="search_term" placeholder='Bars' value=search_term class='form-control'}}
+                </div>
+                <label for="term" class="col-xs-12">Enter Search Location</label><br>
+                <div class="col-sm-12">
+                    {{input id="search_location" placeholder='Philadelphia, PA' value=search_location class='form-control'}}
+                </div>
+                <label for="term" class="col-xs-12">Sort Results By</label><br>
+                <div class="col-sm-12">
+                    <select class="" id="location_sort_by">
+                        <option value="0">Best Matched</option>
+                        <option value="1">Closest</option>
+                        <option value="2">Highest Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn btn-success" type="submit"> Search!</button><br>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </form>
+
+
+    </div>
+    <div id="location_listing">
+    {{#each model.locations as |location|}}
+        <div align="left"><span class="bold">{{ location.name}}</span>
+            <br/><span class="bold">Rating:</span> <img src="{{ location.rating_img_url_small }}"/></div>
+    <div class="location_left_block">
+        <img class="my_avatar" src="{{ location.image_url}}"/>
+    </div>
+    <div class="location_right_block" align="left">
+        <span class="bold">Review Snippet:</span> <br/>{{ location.snippet_text}}
+    </div>
+    <div class="clearIt"></div>
+        <a href="{{ location.url}}">View More On Yelp</a>
+
+
+    {{/each}}
+    </div>
+
+
+{{/if}}
+</div>

@@ -1,0 +1,21 @@
+<div id="loginFormContainer">
+    <form class="form-login" {{action 'authenticate' on='submit'}}>
+        <h2 class="h2">User Login</h2> <span class="closeLoginForm" {{action 'onOutsideClick'}}> Close</span>
+        <div id="registerLink">Don't have an account yet? Sign up <a href="#"> here.</a> </div>
+        <div class="">
+            <label for="identification" class="col-xs-12">Username</label><br>
+            <div class="col-sm-12">
+                {{input id='identification' placeholder='Enter Login' value=identification class='form-control'}}
+            </div>
+        </div>
+        <div class="">
+            <label for="password" class="col-xs-12" >Password</label><br>
+            <div class="col-sm-12">
+                {{input id='password' placeholder='Confirm Password' type='password' value=password class='form-control'}}
+            </div>
+        </div>
+        <button class="btn btn-default" type="submit"> Login to my Account</button><br>
+        <div style="clear:both"></div>
+    </form>
+
+</div>

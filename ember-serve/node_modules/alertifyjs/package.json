@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "alertifyjs",
+        "scope": null,
+        "escapedName": "alertifyjs",
+        "name": "alertifyjs",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/jeffreyspencer/Code/ember-serve"
+    ]
+  ],
+  "_from": "alertifyjs@latest",
+  "_id": "alertifyjs@1.9.0",
+  "_inCache": true,
+  "_location": "/alertifyjs",
+  "_nodeVersion": "5.10.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/alertifyjs-1.9.0.tgz_1485447206910_0.8853214615955949"
+  },
+  "_npmUser": {
+    "name": "myounes",
+    "email": "myounes@gmail.com"
+  },
+  "_npmVersion": "4.0.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "alertifyjs",
+    "scope": null,
+    "escapedName": "alertifyjs",
+    "name": "alertifyjs",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/alertifyjs/-/alertifyjs-1.9.0.tgz",
+  "_shasum": "d2b6269ce98c266df39cb5fe007618522ea0b4b9",
+  "_shrinkwrap": null,
+  "_spec": "alertifyjs",
+  "_where": "/Users/jeffreyspencer/Code/ember-serve",
+  "author": {
+    "name": "Mohammad Younes",
+    "email": "Mohammad@alertifyjs.com",
+    "url": "http://alertifyjs.com"
+  },
+  "bugs": {
+    "url": "https://github.com/MohammadYounes/AlertifyJS/issues"
+  },
+  "dependencies": {},
+  "description": "AlertifyJS is a javascript framework for developing pretty browser dialogs and notifications.",
+  "devDependencies": {
+    "docpad": "~6.69.0",
+    "docpad-plugin-eco": "~2.1.0",
+    "docpad-plugin-ghpages": "~2.4.3",
+    "docpad-plugin-highlightjs": "~2.2.2",
+    "docpad-plugin-livereload": "~2.6.0",
+    "docpad-plugin-marked": "~2.2.1",
+    "docpad-plugin-partials": "~2.9.1",
+    "grunt": "~0.4.1",
+    "grunt-autoprefixer": "x.x.x",
+    "grunt-banner": "~0.3.1",
+    "grunt-cli": "~0.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "x.x.x",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "x.x.x",
+    "grunt-contrib-cssmin": "x.x.x",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-less": "x.x.x",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-rtlcss": "x.x.x"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "d2b6269ce98c266df39cb5fe007618522ea0b4b9",
+    "tarball": "https://registry.npmjs.org/alertifyjs/-/alertifyjs-1.9.0.tgz"
+  },
+  "gitHead": "1d04b985d4e3809ce7d7c17d6081c7240612225d",
+  "homepage": "http://alertifyjs.com",
+  "keywords": [
+    "alertifyjs",
+    "alert",
+    "confirm",
+    "prompt",
+    "dialog",
+    "alertify",
+    "javascript framework",
+    "pretty dialogs"
+  ],
+  "licenses": [
+    {
+      "type": "GPL 3",
+      "url": "https://opensource.org/licenses/gpl-3.0"
+    }
+  ],
+  "main": "./build/alertify.js",
+  "maintainers": [
+    {
+      "name": "myounes",
+      "email": "myounes@gmail.com"
+    }
+  ],
+  "name": "alertifyjs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MohammadYounes/AlertifyJS.git"
+  },
+  "scripts": {},
+  "version": "1.9.0"
+}

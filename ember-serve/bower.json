@@ -1,0 +1,8 @@
+{
+  "name": "ember-serve",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "alertify.js": "~0.3.11",
+    "moment": "momentjs#^2.17.1"
+  }
+}

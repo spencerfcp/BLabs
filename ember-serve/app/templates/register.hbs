@@ -1,0 +1,25 @@
+<div id="registration_block">
+{{#if registered}}
+    <h1>Registered!</h1>
+    <p>Registration was successful.  You can login with the credentials you registered with!</p>
+{{else}}
+    {{#if errorMessage}}
+        {{errorMessage}}
+    {{/if}}
+
+    <form  class="form-style-9" {{action 'register' on='submit'}}>
+        <div id="register_form_container" class="passwords_match">
+
+        <p>Create a New Account</p>
+        <label for="reg_identification">Email</label>
+        {{input id='reg_identification'  placeholder='Email Address' value=model.email type='email' class="field-style field-split align-left"}}
+        <label for="reg_password">Password</label>
+        {{input id='reg_password' placeholder='Enter Password' key-up=(action 'confirmSame' model.password password2) type='password' value=model.password class="field-style field-split align-left"}}
+            <label for="reg_password2">Password Again</label>{{#if passwords_match}}{{else}}<span class="error">Passwords Must Match</span> {{/if}}
+
+            {{input id='reg_password2'  key-up=(action 'confirmSame' model.password password2)   placeholder='Enter Password' type='password' value=password2 class="field-style field-split align-left"}}
+            <button type="submit" class="main_register_button">Register</button>
+        </div>
+    </form>
+{{/if}}
+</div>
