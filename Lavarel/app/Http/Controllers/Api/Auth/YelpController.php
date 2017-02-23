@@ -22,22 +22,17 @@ class YelpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function emailResults()
-    {
-        //
-    }
 
     public function search(Request $request) {
-        $search_terms = $request->only('search_term', 'search_location', 'search_sort');
-        $search_term = isset($search_terms['search_term']) ? $search_terms['search_term'] : null;
-        $search_location = isset($search_terms['search_location']) ? $search_terms['search_location'] : null;
-        $search_sort = isset($search_terms['search_sort']) ? $search_terms['search_sort'] : null;
-        $token = \JWTAuth::getToken();
+        $search_terms = $request->only('search_term', 'search_location', 'search_sort', 'token');
+        $search_term = isset($search_terms['search_term']) ? $search_terms['search_term'] : '';
+        $search_location = isset($search_terms['search_location']) ? $search_terms['search_location'] : '';
+        $search_sort = isset($search_terms['search_sort']) ? $search_terms['search_sort'] : 0;
+        $token = $search_terms['token'];
         $user_id = \JWTAuth::toUser($token)->id;
-
         $yelp = new \Yelp();
         $results = $yelp->query_api($search_term, $search_location, $search_sort);
-        if($search_term || $search_location) {
+        if($search_term !='' || $search_location !='') {
             DB::table('search_history')->insert(
                 ['searchterm' => $search_term, 'created_at'=> date('Y-m-d') , 'searchlocation' => $search_location, 'user_id' => $user_id]
             );
@@ -48,7 +43,7 @@ class YelpController extends Controller
 
     public function searchHistory(Request $request) {
         //$normalizer = new ObjectNormalizer();
-        $token = \JWTAuth::getToken();
+        $token = $request->get('token');
         $user_id = \JWTAuth::toUser($token)->id;
         $search_history = DB::select('select * from search_history where user_id = ? order by created_at DESC limit 15', [$user_id]);
         //$api_search_history =  $this->normalizeResult((object) $search_history);
@@ -69,6 +64,13 @@ class YelpController extends Controller
     public function create()
     {
         //
+    }
+
+    public function initLocation() {
+        return response()->json(array());
+    }
+    public function initHistory() {
+        return response()->json(array());
     }
 
     public function normalizeResult($data){

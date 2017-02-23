@@ -20,11 +20,13 @@ $api->version('v1',function($api){
 
         // Public methods (move member update to auth in production)
         $api->post('update-member', 'Auth\UsersController@update');
-        $api->get('locations','Auth\YelpController@search');
-        $api->get('search-histories','Auth\YelpController@searchHistory');
+        $api->get('locations','Auth\YelpController@initLocation');
+        $api->get('search-histories','Auth\YelpController@initHistory');
+        $api->get('load-locations','Auth\YelpController@search');
+        $api->get('load-search-histories','Auth\YelpController@searchHistory');
     });
 });
-
+/*
 // Catchall - Displays Ember app
 Route::any('{catchall}',function(){
     return view('app');

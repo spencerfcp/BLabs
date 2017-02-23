@@ -2,7 +2,7 @@
     <div id="mainNavContainer">
         <div class="navContainer">
             <ul>
-                <li class="one {{if home_nav_page_1 "active_link"}}" id="my_account"  {{action 'navClick' 'my_account' on 'click' }}>{{#link-to "home"}}My Account{{/link-to}}</li><li id="saved_lists" class="two {{if home_nav_page_2 "active_link"}}" {{action 'navClick'  'saved_lists'  on 'click' }}>{{#link-to "home" }}History{{/link-to}}</li><li id="search_places" class="three {{if home_nav_page_3 "active_link"}}" {{action 'navClick' 'search_places' on 'click' }}>{{#link-to "home"}}Search{{/link-to}}</li>
+                <li class="one {{if home_nav_page_1 "active_link"}}" id="my_account"  {{action 'navClick' 'my_account' on 'click' }}>{{#link-to "home"}}My Account{{/link-to}}</li><li id="saved_lists" class="two {{if home_nav_page_2 "active_link"}}" {{action 'updateSearchHistory' }}>{{#link-to "home" }}History{{/link-to}}</li><li id="search_places" class="three {{if home_nav_page_3 "active_link"}}" {{action 'navClick' 'search_places' on 'click' }}>{{#link-to "home"}}Search{{/link-to}}</li>
                 <hr>
             </ul>
         </div>

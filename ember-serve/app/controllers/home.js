@@ -60,14 +60,32 @@ export default Ember.Controller.extend({
             var search_term = this.get('search_term');
             var search_location = this.get('search_location');
             var search_sort = Ember.$('#location_sort_by').val();
-            var user_id = this.get('session').get('data.authenticated.user_id');
-            this.get('ajax').request( "http://homestead.app/api/locations",
-                {method: 'GET', data: {user_id: user_id, search_sort: search_sort, search_location: search_location, search_term: search_term}}).then((json) =>{
-                    var model = self.get('model.locations');
-                    var new_json = jsonNormalizeResponse(json, 'location');
-                    model.store.unloadAll();
+            var token = self.get('session').get('data.authenticated.token');
+            this.get('ajax').request( "http://homestead.app/api/load-locations",
+                {method: 'GET', data: {token:token, search_sort: search_sort, search_location: search_location, search_term: search_term}}).then((json) =>{
+                     var model = self.get('model.locations');
+                     var new_json = jsonNormalizeResponse(json, 'location');
+                     model.store.unloadAll('location');
+                     model.store.pushPayload(new_json);
+                }, (message) => { console.log(message);alertify.error('There was an error submitting this search.');}
+            );
+        },
+        updateSearchHistory() {
+            let self = this;
+            self.setProperties({
+                home_nav_page_1: false,
+                home_nav_page_2: 1,
+                home_nav_page_3: false
+            });
+            this.get('session').set('data.home_nav_page', 2);
+            var token = self.get('session').get('data.authenticated.token');
+            this.get('ajax').request( "http://homestead.app/api/load-search-histories",
+                {method: 'GET', data: {token:token}}).then((json) =>{
+                    var model = self.get('model.search_history_data');
+                    var new_json = jsonNormalizeResponse(json, 'search-history');
+                    model.store.unloadAll('search-history');
                     model.store.pushPayload(new_json);
-                }, () => {alertify.error('There was an error submitting this search.');}
+                }, (message) => { console.log(message);alertify.error('There was an error submitting this search.');}
             );
         },
         navClick(id){
@@ -80,14 +98,6 @@ export default Ember.Controller.extend({
 
                 });
                 this.get('session').set('data.home_nav_page', 1);
-            }
-            else if (id === 'saved_lists') {
-                self.setProperties({
-                    home_nav_page_1: false,
-                    home_nav_page_2: 1,
-                    home_nav_page_3: false
-                });
-                this.get('session').set('data.home_nav_page', 2);
             }
             else if (id === 'search_places') {
                 self.setProperties({
