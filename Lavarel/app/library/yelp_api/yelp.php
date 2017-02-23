@@ -44,7 +44,7 @@ class Yelp {
         $this->DEFAULT_TERM = 'dinner';
         $this->DEFAULT_LOCATION = 'Philadelphia, PA';
         $this->DEFAULT_SORT = 0;
-        $this->SEARCH_LIMIT = 1;
+        $this->SEARCH_LIMIT = 10;
         $this->SEARCH_PATH = '/v2/search/';
         $this->BUSINESS_PATH = '/v2/business/';
     }
