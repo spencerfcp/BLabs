@@ -23,7 +23,7 @@ You'll need Virtual Box, Vagrant, and nfs server installed locally for this appl
 sudo apt-get install nfs-kernel-server
 sudo apt-get install virtualbox
 sudo apt-get install vagrant
-sudo apt-get install virtualbox-dkms'
+sudo apt-get install virtualbox-dkms
 ```
 
 After these packages are installed, go to the directory you selected earlier. Copy the contents of the Homestead folder to
@@ -62,7 +62,7 @@ Run the two following commands in the ember-serve directory:
 Install Ember CLI
 ```
 sudo npm install -g ember-cli 
-sudo npm install -g phantomjs2'
+sudo npm install -g phantomjs2
 ```
 Swap back to the root folder, and open up Lavarel.
 
